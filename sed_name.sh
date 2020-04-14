@@ -7,3 +7,4 @@ if [ -z "$name" ];then
 fi
 
 find . -type f -name "*.go" | xargs sed -i 's#gin-template#'$name'#g'
+mv gin-template.conf $name.conf
