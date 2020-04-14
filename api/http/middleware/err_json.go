@@ -32,7 +32,7 @@ func GetPanic(c *gin.Context){
 	defer func() {
 		if err := recover(); err != nil {
 			fmt.Println(err)
+			response.JSON(c, exception.New500())
 		}
 	}()
-	response.JSON(c, exception.New500())
 }
