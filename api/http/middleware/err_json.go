@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"fmt"
 	"gin-template/api/http/exception"
 	"gin-template/api/http/response"
 	"github.com/gin-gonic/gin"
@@ -25,4 +26,13 @@ func ExceptionJson(c *gin.Context) {
 		return
 	}
 	return
+}
+
+func GetPanic(c *gin.Context){
+	defer func() {
+		if err := recover(); err != nil {
+			fmt.Println(err)
+		}
+	}()
+	response.JSON(c, exception.New500())
 }

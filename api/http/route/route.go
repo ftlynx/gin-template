@@ -13,6 +13,7 @@ func MyRoute() error {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(middleware.AddCorsHeader)
+	r.Use(middleware.GetPanic)
 	r.Use(middleware.ExceptionJson)
 
 	userApi := r.Group(ApiPrefix)

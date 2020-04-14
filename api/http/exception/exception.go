@@ -88,6 +88,14 @@ func New405() Exception {
 		explain:  "405 method not allowed",
 	}
 }
+func New500() Exception {
+	return &exception{
+		httpCode: http.StatusInternalServerError,
+		code:     http.StatusInternalServerError,
+		message:  "",
+		explain:  "internal server error",
+	}
+}
 
 //通用
 func NewException(code int, message string) Exception {
