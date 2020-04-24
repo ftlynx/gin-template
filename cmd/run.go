@@ -14,8 +14,6 @@ var confFile = "gin-template.conf"
 
 var runCmd = &cobra.Command{
 	Use:   "run",
-	Short: "run",
-	Long:  `run`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		c, err := file.NewFileConf(confFile).GetConf()
 		if err != nil {

@@ -10,9 +10,7 @@ import (
 var vers bool
 
 var RootCmd = &cobra.Command{
-	Use:   "gin-template",
-	Short: "gin-template",
-	Long:  `gin-template ...`,
+	Use:   os.Args[0],
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if vers {
 			fmt.Println(version.FullVersion())
