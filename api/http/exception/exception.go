@@ -105,7 +105,7 @@ func NewException(code int, message string) Exception {
 			httpCode: 498, //乱定义了一个http code
 			code:     code,
 			message:  message,
-			explain:  "不应该发生的错误",
+			explain:  "未知的错误",
 		}
 	}
 	return &exception{

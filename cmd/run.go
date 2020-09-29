@@ -4,7 +4,6 @@ import (
 	"gin-template/api/http/route"
 	"gin-template/internal/config/file"
 	"gin-template/internal/global"
-	"gin-template/pkg"
 	"github.com/ftlynx/tsx/mysqlx"
 	"github.com/ftlynx/tsx/redisx"
 	"github.com/spf13/cobra"
@@ -31,10 +30,6 @@ var runCmd = &cobra.Command{
 		}
 
 		global.Conf = c
-
-		if err := pkg.InitConfig(); err != nil {
-			return err
-		}
 
 		return route.MyRoute()
 	},

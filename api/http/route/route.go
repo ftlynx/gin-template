@@ -15,7 +15,6 @@ func MyRoute() error {
 	r.Use(middleware.AddCorsHeader)
 	r.Use(middleware.GetPanic)
 	r.Use(middleware.ExceptionJson)
-
 	userApi := r.Group(ApiPrefix)
 	for _, v := range apis {
 		switch v.Group {
@@ -34,7 +33,6 @@ func MyRoute() error {
 			}
 		default:
 			return fmt.Errorf("%s group not support", v.Name)
-
 		}
 	}
 
