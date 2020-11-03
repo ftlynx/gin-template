@@ -5,6 +5,7 @@ import (
 	"gin-template/api/http/middleware"
 	"gin-template/internal/global"
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"net/http"
 )
 
@@ -13,6 +14,7 @@ func MyRoute() error {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(middleware.AddCorsHeader)
+	r.Use(middleware.PrometheusMetric)
 	r.Use(middleware.GetPanic)
 	r.Use(middleware.ExceptionJson)
 	userApi := r.Group(ApiPrefix)
@@ -35,6 +37,7 @@ func MyRoute() error {
 			return fmt.Errorf("%s group not support", v.Name)
 		}
 	}
+	r.GET("/metrics", gin.WrapH(promhttp.Handler()))
 
 	return r.Run(global.Conf.App.Listen)
 }

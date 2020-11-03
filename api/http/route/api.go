@@ -20,5 +20,5 @@ type Api struct {
 }
 
 var apis = []Api{
-	{Name: "ping", Group: ApiPrefix, Method: http.MethodPost, Uri: "/ping", Handler: handler.Ping, Comment: "ping"},
+	{Name: "ping", Group: ApiPrefix, Method: http.MethodGet, Uri: "/ping", Handler: handler.Ping, Comment: "ping"},
 }
